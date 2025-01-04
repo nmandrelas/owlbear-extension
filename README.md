@@ -2,14 +2,6 @@
 
 3D dice extension for playing Forbidden Lands in OwlBear Rodeo, based on the [OwlBear Rodeo Dice Extension](https://github.com/owlbear-rodeo/dice).
 
-
-
-Thanks to the OwlBear Rodeo dev team for letting amateurs like me fiddle with their Dice roller
-
-MASSIVE thanks to [jjsoini](https://github.com/jjsoini/) for help with the Pushing function. Check him out!
-
-![Example](/docs/header.jpg)
-
 ## Building
 
 This project uses [Yarn](https://yarnpkg.com/) as a package manager.

@@ -26,6 +26,7 @@ import { DiceType } from "../types/DiceType";
 import { useDiceHistoryStore } from "./history";
 import { Die } from "../types/Die";
 import { isDice, Dice } from "../types/Dice";
+import { DiceResultsFbl } from "./DiceResultsFbl";
 
 
 const jiggle = keyframes`
@@ -384,7 +385,7 @@ function FinishedRollControls() {
       <Stack
         sx={{
           position: "absolute",
-          top: 0,
+          top: "8%",
           left: "50%",
           transform: "translateX(-50%)",
           pointerEvents: "none",
@@ -407,6 +408,33 @@ function FinishedRollControls() {
           </Tooltip>
         )}
       </Stack>
+      <Stack
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: "50%",
+          transform: "translateX(-50%)",
+          pointerEvents: "none",
+          padding: 3,
+          alignItems: "center",
+        }}
+        component="div"
+      >
+        {roll && (
+          <DiceResultsFbl
+            diceRoll={roll}
+            rollValues={finishedRollValues}
+            expanded={resultsExpanded}
+            onExpand={setResultsExpanded}
+          />
+        )}
+        {roll?.hidden && (
+          <Tooltip title="Hidden Roll" sx={{ pointerEvents: "all" }}>
+            <HiddenIcon htmlColor="white" />
+          </Tooltip>
+        )}
+      </Stack>
+
     </>
   );
 }
