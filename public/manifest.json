@@ -1,0 +1,17 @@
+{
+  "name": "FBL Companion",
+  "version": "0.0.1",
+  "manifest_version": 1,
+  "author": "AcidDreamer",
+  "homepage_url": "https://github.com/Zonrotan/owlbear_fbl_dice",
+  "icon": "/logo.png",
+  "description": "Companion extension for forbidden lands",
+  "action": {
+    "title": "FBL Companion",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "height": 700,
+    "width": 375
+  },
+  "background_url": "/background.html"
+}
