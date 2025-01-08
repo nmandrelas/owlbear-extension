@@ -1,3 +1,4 @@
+import OBR from "@owlbear-rodeo/sdk";
 import { Dice, isDice } from "../types/Dice";
 import { isDie } from "../types/Die";
 
@@ -189,7 +190,7 @@ export function getFailDiceValueFbl(
     return Math.max(...currentValues) + bonus;
   } else if (dice.combination === "LOWEST") {
     return Math.min(...currentValues) + bonus;
-  } else {
+  } else {    
     return currentValues.reduce((a, b) => a + b) + bonus;
   }
 }

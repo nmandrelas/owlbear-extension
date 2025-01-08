@@ -27,6 +27,7 @@ import { useDiceHistoryStore } from "./history";
 import { Die } from "../types/Die";
 import { isDice, Dice } from "../types/Dice";
 import { DiceResultsFbl } from "./DiceResultsFbl";
+import OBR from "@owlbear-rodeo/sdk";
 
 
 const jiggle = keyframes`
@@ -329,7 +330,6 @@ function FinishedRollControls() {
   const [resultsExpanded, setResultsExpanded] = useState(false);
 
   function pushRoll(){
-
       reroll(getDiceToPush(roll as Dice, finishedRollValues));
 
   }
