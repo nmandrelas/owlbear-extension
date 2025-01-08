@@ -1,6 +1,6 @@
 import { Player } from "@owlbear-rodeo/sdk";
 import { useEffect, useMemo, useRef } from "react";
-import { getCombinedDiceValue } from "../helpers/getCombinedDiceValue";
+import { getCombinedDiceValue, getFailDiceValueFbl, getSuccessDiceValueFbl } from "../helpers/getCombinedDiceValue";
 import { DiceRoll } from "../types/DiceRoll";
 import { DiceThrow } from "../types/DiceThrow";
 import { DiceTransform } from "../types/DiceTransform";
@@ -20,6 +20,12 @@ export function usePlayerDice(player?: Player) {
   const rollValues = useMemo(() => {
     return player?.metadata[getPluginId("rollValues")] as
       | Record<string, number | null>
+      | undefined;
+  }, [player]);
+
+  const fblRollValues = useMemo(() => {
+    return player?.metadata[getPluginId("fblRollValues")] as
+      | Record<string, string | null>
       | undefined;
   }, [player]);
 
@@ -70,6 +76,15 @@ export function usePlayerDice(player?: Player) {
     }
   }, [diceRoll, finishedRollValues]);
 
+  const fblFinalValue = useMemo(() => {
+    if (diceRoll && finishedRollValues) {
+      return getSuccessDiceValueFbl(diceRoll, finishedRollValues) + 'S-' + getFailDiceValueFbl(diceRoll, finishedRollValues) + `F`;
+    } else {
+      return null;
+    }
+  }, [diceRoll, finishedRollValues]);
+
+
   const finishedRolling = useMemo(() => {
     if (!rollValues) {
       return false;
@@ -92,5 +107,6 @@ export function usePlayerDice(player?: Player) {
     finalValue,
     finishedRollValues,
     finishedRolling,
+    fblFinalValue
   };
 }

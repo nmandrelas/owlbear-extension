@@ -16,14 +16,14 @@ export function PlayerAvatar({
   player: Player;
   onSelect: () => void;
 }) {
-  const { finalValue, finishedRolling } = usePlayerDice(player);
-
+  const { fblFinalValue, finishedRolling } = usePlayerDice(player);
+  
   const theme = useTheme();
 
   return (
     <Stack alignItems="center" my={0.5}>
       <Badge
-        badgeContent={finishedRolling ? finalValue : null}
+        badgeContent={finishedRolling ? fblFinalValue : null}
         showZero
         overlap="circular"
         anchorOrigin={{
@@ -36,7 +36,6 @@ export function PlayerAvatar({
           },
           pointerEvents: "none",
         }}
-        max={999}
       >
         <IconButton
           sx={{ borderRadius: "20px", p: 0, pointerEvents: "all" }}
